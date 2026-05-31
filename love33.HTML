@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>💌 Для тебя</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            background: #0a0015;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: 'Segoe UI', Arial, sans-serif;
+            overflow-x: hidden;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+
+        #stars {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .star {
+            position: absolute;
+            background: white;
+            border-radius: 50%;
+            animation: twinkle var(--d) ease-in-out infinite;
+            animation-delay: var(--delay);
+        }
+
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 1; }
+        }
+
+        #hearts {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .float-heart {
+            position: absolute;
+            font-size: 22px;
+            animation: fall linear infinite;
+            opacity: 0.5;
+        }
+
+        @keyframes fall {
+            0% { transform: translateY(-100px) rotate(0deg); opacity: 0.7; }
+            100% { transform: translateY(100vh) rotate(360deg); opacity: 0; }
+        }
+
+        .container {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            padding: 20px;
+            max-width: 600px;
+            width: 90%;
+        }
+
+        .quest-box {
+            background: rgba(0, 0, 0, 0.85);
+            border: 2px solid #ff69b4;
+            border-radius: 20px;
+            padding: 30px 25px;
+            color: #e0d0ff;
+            font-size: 16px;
+            min-height: 320px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 0 30px rgba(255, 105, 180, 0.2);
+        }
+
+        .quest-title { color: #ff69b4; font-size: 22px; font-weight: bold; margin-bottom: 10px; }
+        .quest-desc { color: #aaa; font-size: 13px; margin-bottom: 15px; }
+
+        .btn {
+            background: #ff1493;
+            color: white;
+            border: none;
+            padding: 14px 35px;
+            font-size: 17px;
+            border-radius: 50px;
+            cursor: pointer;
+            margin: 8px;
+            font-weight: bold;
+            box-shadow: 0 0 15px rgba(255, 20, 147, 0.4);
+            transition: all 0.3s ease;
+        }
+        .btn:hover { background: #ff69b4; transform: scale(1.05); }
+        .btn-no { background: #555; position: relative; }
+
+        .clicker-area {
+            width: 160px; height: 160px; border-radius: 50%;
+            background: radial-gradient(circle, #ff69b4, #ff1493);
+            display: flex; align-items: center; justify-content: center;
+            cursor: pointer; font-size: 60px; margin: 12px auto;
+            box-shadow: 0 0 30px rgba(255, 105, 180, 0.5);
+        }
+        .clicker-area:active { transform: scale(0.9); }
+        .clicker-counter { color: white; font-size: 20px; margin-top: 8px; }
+
+        .guess-input {
+            background: rgba(255,255,255,0.1); border: 2px solid #ff69b4;
+            color: white; padding: 10px; font-size: 18px;
+            border-radius: 10px; text-align: center; width: 100px; outline: none;
+        }
+        .guess-hint { color: #ffaa00; margin-top: 8px; font-size: 14px; }
+
+        .catch-area {
+            width: 100%; height: 250px; background: rgba(0,0,0,0.5);
+            border-radius: 15px; position: relative; overflow: hidden;
+            border: 1px solid rgba(255,105,180,0.3); margin: 10px 0; cursor: crosshair;
+        }
+        .catch-heart {
+            position: absolute; font-size: 30px; cursor: pointer;
+            animation: pop 0.3s ease-out;
+        }
+        @keyframes pop {
+            0% { transform: scale(0); }
+            80% { transform: scale(1.2); }
+            100% { transform: scale(1); }
+        }
+        .catch-score { color: white; font-size: 18px; margin-top: 8px; }
+
+        .final-heart { font-size: 90px; animation: heartbeat 1s infinite; }
+        @keyframes heartbeat {
+            0%,100% { transform: scale(1); }
+            50% { transform: scale(1.25); }
+        }
+
+        .final-text { color: #ff69b4; font-size: 18px; line-height: 1.8; text-align: center; }
+        .final-text .big { font-size: 24px; font-weight: bold; color: #fff; }
+
+        .love-text {
+            font-size: 36px; font-weight: bold; color: #fff;
+            text-shadow: 0 0 20px #ff1493, 0 0 40px #ff69b4, 0 0 60px #ff1493, 0 0 80px #ff69b4, 0 0 100px #ff1493;
+            animation: glowPulse 1.5s ease-in-out infinite;
+        }
+        @keyframes glowPulse {
+            0%,100% { text-shadow: 0 0 20px #ff1493, 0 0 40px #ff69b4, 0 0 60px #ff1493; }
+            50% { text-shadow: 0 0 40px #ff1493, 0 0 80px #ff69b4, 0 0 120px #ff1493, 0 0 160px #ff69b4, 0 0 200px #ff1493; }
+        }
+
+        .progress-bar {
+            width: 100%; height: 6px; background: rgba(255,255,255,0.1);
+            border-radius: 10px; margin: 10px 0; overflow: hidden;
+        }
+        .progress-fill { height: 100%; background: #ff69b4; border-radius: 10px; transition: width 0.5s; }
+        .counter { color: #888; font-size: 12px; }
+
+        /* ЗВЁЗДЫ-БУКВЫ — САМЫЙ ВЕРХ */
+        .name-star {
+            position: absolute;
+            font-size: 80px;
+            font-weight: bold;
+            color: #fff;
+            text-shadow: 0 0 30px #ff69b4, 0 0 60px #ff1493, 0 0 90px #ff69b4, 0 0 120px #ff1493, 0 0 150px #ff69b4;
+            animation: floatName 1.5s ease-out forwards;
+            opacity: 0;
+            z-index: 10;
+            font-family: 'Arial', sans-serif;
+        }
+        @keyframes floatName {
+            0% { transform: translateY(80px) scale(0.2); opacity: 0; }
+            50% { transform: translateY(-20px) scale(1.3); opacity: 1; }
+            100% { transform: translateY(0) scale(1); opacity: 1; }
+        }
+        
+        .name-sparkle {
+            position: absolute;
+            border-radius: 50%;
+            background: #fff;
+            box-shadow: 0 0 15px #ff69b4, 0 0 30px #ff1493, 0 0 45px #ff69b4;
+            animation: floatName 1.2s ease-out forwards;
+            opacity: 0;
+            z-index: 9;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="stars"></div>
+    <div id="hearts"></div>
+
+    <div class="container">
+        <div class="quest-box" id="questBox"></div>
+        <div class="progress-bar"><div class="progress-fill" id="progressFill" style="width:0%"></div></div>
+        <div class="counter" id="counter"></div>
+    </div>
+
+    <script>
+        const HER_NAME = 'Диана';
+        const YOUR_NAME = 'Тимур';
+        const TELEGRAM_BOT_TOKEN = '8537606773:AAHpaEeu3oqZUzzKuuFNvvCEZZSBSplGItg';
+        const TELEGRAM_CHAT_ID = '5487958383';
+
+        let step=0, totalSteps=4, clickCount=0, clickGoal=15, secretNum=Math.floor(Math.random()*50)+1, catchCount=0, catchGoal=8, catchInterval=null;
+
+        function createStars() {
+            const c=document.getElementById('stars');
+            for(let i=0;i<150;i++){
+                const s=document.createElement('div'); s.className='star';
+                s.style.left=Math.random()*100+'%'; s.style.top=Math.random()*100+'%';
+                s.style.width=(Math.random()*3+1)+'px'; s.style.height=s.style.width;
+                s.style.setProperty('--d',(Math.random()*3+2)+'s'); s.style.setProperty('--delay',Math.random()*5+'s');
+                c.appendChild(s);
+            }
+        }
+        function heart(){
+            const c=document.getElementById('hearts'); const h=document.createElement('span');
+            h.className='float-heart'; h.textContent=['💚','💖','💕','💗','💝','✨'][Math.floor(Math.random()*6)];
+            h.style.left=Math.random()*100+'%'; h.style.animationDuration=(Math.random()*3+3)+'s';
+            h.style.fontSize=(Math.random()*20+15)+'px'; c.appendChild(h);
+            setTimeout(function(){h.remove();},6000);
+        }
+        setInterval(heart,400);
+
+        function show(title,desc,html){
+            const box=document.getElementById('questBox'); box.style.opacity='0';
+            setTimeout(function(){
+                box.innerHTML=(title?'<div class="quest-title">'+title+'</div>':'')+(desc?'<div class="quest-desc">'+desc+'</div>':'')+html;
+                box.style.opacity='1';
+            },200);
+        }
+        function bar(){
+            document.getElementById('progressFill').style.width=(step/totalSteps*100)+'%';
+            document.getElementById('counter').textContent='Шаг '+(step+1)+' из '+(totalSteps+1);
+        }
+        function sendTelegram(text){
+            fetch(`https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`,{
+                method:'POST',headers:{'Content-Type':'application/json'},
+                body:JSON.stringify({chat_id:TELEGRAM_CHAT_ID,text:text})
+            }).catch(e=>console.log('Ошибка отправки:',e));
+        }
+
+        function step0(){step=0;bar();show('Привет, '+HER_NAME+' 💚','Я хочу тебе кое-что сказать...','<p>Но сначала пройди испытания 🎮</p><br><button class="btn" onclick="step1()">💚 НАЧАТЬ</button>');}
+        function step1(){step=1;clickCount=0;bar();show('🎮 Испытание 1','Проверка скорости','<div>Кликни <b style="color:#ff69b4;">'+clickGoal+'</b> раз!</div><div class="clicker-area" id="clicker" onclick="doClick()">💚</div><div class="clicker-counter" id="clickerScore">0 / '+clickGoal+'</div>');}
+        function doClick(){clickCount++;const s=document.getElementById('clickerScore');if(s)s.textContent=clickCount+' / '+clickGoal;const e=document.getElementById('clicker');if(e){e.style.transform='scale(0.85)';setTimeout(function(){e.style.transform='scale(1)';},80);}if(clickCount>=clickGoal)setTimeout(step2,500);}
+        function step2(){step=2;secretNum=Math.floor(Math.random()*50)+1;bar();show('🎮 Испытание 2','Угадай моё число','<div>Число от <b>1 до 50</b></div><input type="number" class="guess-input" id="guessInp" min="1" max="50" placeholder="?"><br><button class="btn" onclick="doGuess()" style="padding:8px 20px;font-size:14px;">🎯 Угадать</button><div class="guess-hint" id="guessHint"></div>');setTimeout(function(){const inp=document.getElementById('guessInp');if(inp)inp.focus();},500);}
+        function doGuess(){const inp=document.getElementById('guessInp'),hint=document.getElementById('guessHint');if(!inp||!hint)return;const g=parseInt(inp.value);if(!g||g<1||g>50){hint.textContent='⚠️ От 1 до 50!';return;}if(g===secretNum){hint.innerHTML='✅ УГАДАЛА! Число: <b>'+secretNum+'</b>';hint.style.color='#00ff00';setTimeout(step3,1200);}else if(g<secretNum){hint.textContent='📈 Больше!';hint.style.color='#ffaa00';}else{hint.textContent='📉 Меньше!';hint.style.color='#ffaa00';}inp.value='';inp.focus();}
+        function step3(){step=3;catchCount=0;bar();if(catchInterval)clearInterval(catchInterval);show('🎮 Испытание 3','Ловкость рук','<div>Поймай <b style="color:#ff69b4;">'+catchGoal+'</b> сердечек!</div><div class="catch-area" id="catchArea"></div><div class="catch-score" id="catchScore">0 / '+catchGoal+'</div>');catchInterval=setInterval(function(){if(catchCount<catchGoal&&step===3)makeHeart();},700);setTimeout(makeHeart,100);}
+        function makeHeart(){const area=document.getElementById('catchArea');if(!area||step!==3)return;const old=area.querySelectorAll('.catch-heart');if(old.length>4)old[0].remove();const h=document.createElement('div');h.className='catch-heart';h.textContent=['💚','💖','💕','💗'][Math.floor(Math.random()*4)];h.style.left=Math.random()*(area.clientWidth-40)+'px';h.style.top=Math.random()*(area.clientHeight-40)+'px';h.onclick=function(e){e.stopPropagation();catchCount++;const s=document.getElementById('catchScore');if(s)s.textContent=catchCount+' / '+catchGoal;h.remove();if(catchCount>=catchGoal){clearInterval(catchInterval);step=4;bar();setTimeout(step4,500);}};area.appendChild(h);setTimeout(function(){if(h.parentNode)h.remove();},2000);}
+        
+        function step4(){step=4;bar();document.getElementById('counter').textContent='';show('','','<div class="final-heart">💖</div><br><div class="final-text"><span class="big">'+HER_NAME+'...</span><br><br>Ты прошла все испытания! 🎉<br><br>Я давно хотел сказать...<br><br><span class="big">Давай встречаться?</span><br><br><div style="display:flex;gap:20px;justify-content:center;flex-wrap:wrap;"><button class="btn" id="btnYes" onclick="answerYes()">💚 Да</button><button class="btn btn-no" id="btnNo" onmouseenter="runAway()" ontouchstart="runAway()">🫣 Нет</button></div></div>');}
+        function runAway(){const btn=document.getElementById('btnNo');if(!btn)return;const box=document.getElementById('questBox');const r=box.getBoundingClientRect();btn.style.position='absolute';btn.style.left=Math.random()*(r.width-btn.offsetWidth-20)+10+'px';btn.style.top=Math.random()*(r.height-btn.offsetHeight-20)+10+'px';btn.style.transition='all 0.3s ease';}
+        
+        function answerYes(){
+            sendTelegram(`💖 ${HER_NAME} сказала ДА! ${YOUR_NAME}, поздравляю!`);
+            document.getElementById('questBox').innerHTML='<div class="final-heart">💖</div><br><div class="final-text"><div class="love-text">Я ЛЮБЛЮ ТЕБЯ ДИАНОЧКА!</div><br><span style="font-size:20px;color:#ff69b4;">Ты — моя вселенная 💫</span></div>';
+            document.getElementById('counter').textContent='';
+            document.getElementById('progressFill').style.width='100%';
+            buildNameWithStars('ДИАНА');
+        }
+
+        function buildNameWithStars(name) {
+            const container = document.getElementById('stars');
+            const letters = name.split('');
+            const letterWidth = 100;
+            const totalWidth = letters.length * letterWidth;
+            const startX = (window.innerWidth - totalWidth) / 2;
+            const centerY = window.innerHeight * 0.15; // ПОДНЯЛ ВЫШЕ — 15% от верха
+            
+            letters.forEach((letter, index) => {
+                const xPos = startX + index * letterWidth;
+                
+                // Звёздочки вокруг
+                for (let i = 0; i < 30; i++) {
+                    const sparkle = document.createElement('div');
+                    sparkle.className = 'name-sparkle';
+                    sparkle.style.left = (xPos + (Math.random() - 0.5) * letterWidth) + 'px';
+                    sparkle.style.top = (centerY + (Math.random() - 0.5) * 120) + 'px';
+                    sparkle.style.width = (Math.random() * 10 + 5) + 'px';
+                    sparkle.style.height = sparkle.style.width;
+                    sparkle.style.animationDelay = (Math.random() * 0.8 + index * 0.2) + 's';
+                    container.appendChild(sparkle);
+                }
+                
+                // Буква
+                const letterEl = document.createElement('div');
+                letterEl.className = 'name-star';
+                letterEl.textContent = letter;
+                letterEl.style.left = (xPos + letterWidth/2 - 40) + 'px';
+                letterEl.style.top = (centerY - 40) + 'px';
+                letterEl.style.animationDelay = (index * 0.2) + 's';
+                container.appendChild(letterEl);
+            });
+        }
+
+        document.addEventListener('copy',function(e){e.preventDefault();});
+        document.addEventListener('contextmenu',function(e){e.preventDefault();});
+        createStars(); step0();
+    </script>
+</body>
+</html>
