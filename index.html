@@ -52,13 +52,13 @@
 
         .float-heart {
             position: absolute;
-            font-size: 18px;
+            font-size: 16px;
             animation: fall linear infinite;
-            opacity: 0.4;
+            opacity: 0.35;
         }
 
         @keyframes fall {
-            0% { transform: translateY(-100px) rotate(0deg); opacity: 0.6; }
+            0% { transform: translateY(-100px) rotate(0deg); opacity: 0.5; }
             100% { transform: translateY(100vh) rotate(360deg); opacity: 0; }
         }
 
@@ -66,8 +66,8 @@
             position: relative;
             z-index: 2;
             text-align: center;
-            padding: 15px;
-            max-width: 500px;
+            padding: 10px;
+            max-width: 480px;
             width: 90%;
         }
 
@@ -75,10 +75,10 @@
             background: rgba(0, 0, 0, 0.8);
             border: 2px solid #ff69b4;
             border-radius: 15px;
-            padding: 25px 20px;
+            padding: 20px 15px;
             color: #e0d0ff;
-            font-size: 14px;
-            min-height: 280px;
+            font-size: 13px;
+            min-height: 260px;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -86,18 +86,18 @@
             box-shadow: 0 0 20px rgba(255, 105, 180, 0.2);
         }
 
-        .quest-title { color: #ff69b4; font-size: 18px; font-weight: bold; margin-bottom: 8px; }
-        .quest-desc { color: #aaa; font-size: 11px; margin-bottom: 12px; }
+        .quest-title { color: #ff69b4; font-size: 16px; font-weight: bold; margin-bottom: 6px; }
+        .quest-desc { color: #aaa; font-size: 10px; margin-bottom: 10px; }
 
         .btn {
             background: #ff1493;
             color: white;
             border: none;
-            padding: 12px 30px;
-            font-size: 15px;
+            padding: 10px 25px;
+            font-size: 14px;
             border-radius: 50px;
             cursor: pointer;
-            margin: 6px;
+            margin: 5px;
             font-weight: bold;
             box-shadow: 0 0 10px rgba(255, 20, 147, 0.4);
             transition: all 0.3s ease;
@@ -106,29 +106,29 @@
         .btn-no { background: #555; position: relative; }
 
         .clicker-area {
-            width: 130px; height: 130px; border-radius: 50%;
+            width: 120px; height: 120px; border-radius: 50%;
             background: radial-gradient(circle, #ff69b4, #ff1493);
             display: flex; align-items: center; justify-content: center;
-            cursor: pointer; font-size: 50px; margin: 10px auto;
+            cursor: pointer; font-size: 45px; margin: 8px auto;
             box-shadow: 0 0 20px rgba(255, 105, 180, 0.4);
         }
         .clicker-area:active { transform: scale(0.9); }
-        .clicker-counter { color: white; font-size: 16px; margin-top: 6px; }
+        .clicker-counter { color: white; font-size: 15px; margin-top: 5px; }
 
         .guess-input {
             background: rgba(255,255,255,0.1); border: 2px solid #ff69b4;
-            color: white; padding: 8px; font-size: 16px;
-            border-radius: 10px; text-align: center; width: 80px; outline: none;
+            color: white; padding: 7px; font-size: 15px;
+            border-radius: 10px; text-align: center; width: 70px; outline: none;
         }
-        .guess-hint { color: #ffaa00; margin-top: 6px; font-size: 12px; }
+        .guess-hint { color: #ffaa00; margin-top: 5px; font-size: 11px; }
 
         .catch-area {
-            width: 100%; height: 200px; background: rgba(0,0,0,0.5);
+            width: 100%; height: 180px; background: rgba(0,0,0,0.5);
             border-radius: 12px; position: relative; overflow: hidden;
-            border: 1px solid rgba(255,105,180,0.3); margin: 8px 0; cursor: crosshair;
+            border: 1px solid rgba(255,105,180,0.3); margin: 6px 0; cursor: crosshair;
         }
         .catch-heart {
-            position: absolute; font-size: 26px; cursor: pointer;
+            position: absolute; font-size: 24px; cursor: pointer;
             animation: pop 0.3s ease-out;
         }
         @keyframes pop {
@@ -136,43 +136,43 @@
             80% { transform: scale(1.2); }
             100% { transform: scale(1); }
         }
-        .catch-score { color: white; font-size: 15px; margin-top: 6px; }
+        .catch-score { color: white; font-size: 14px; margin-top: 5px; }
 
-        .final-heart { font-size: 60px; }
-        .final-text { color: #ff69b4; font-size: 15px; line-height: 1.6; text-align: center; }
-        .final-text .big { font-size: 20px; font-weight: bold; color: #fff; }
+        .final-heart { font-size: 50px; }
+        .final-text { color: #ff69b4; font-size: 14px; line-height: 1.5; text-align: center; }
+        .final-text .big { font-size: 18px; font-weight: bold; color: #fff; }
 
         .love-text {
-            font-size: 26px; font-weight: bold; color: #fff;
-            text-shadow: 0 0 15px #ff1493, 0 0 30px #ff69b4;
+            font-size: 22px; font-weight: bold; color: #fff;
+            text-shadow: 0 0 12px #ff1493, 0 0 24px #ff69b4;
             animation: glowPulse 1.5s ease-in-out infinite;
         }
         @keyframes glowPulse {
-            0%,100% { text-shadow: 0 0 15px #ff1493, 0 0 30px #ff69b4; }
-            50% { text-shadow: 0 0 25px #ff1493, 0 0 50px #ff69b4, 0 0 75px #ff1493; }
+            0%,100% { text-shadow: 0 0 12px #ff1493, 0 0 24px #ff69b4; }
+            50% { text-shadow: 0 0 20px #ff1493, 0 0 40px #ff69b4, 0 0 60px #ff1493; }
         }
 
         .progress-bar {
             width: 100%; height: 4px; background: rgba(255,255,255,0.1);
-            border-radius: 10px; margin: 8px 0; overflow: hidden;
+            border-radius: 10px; margin: 6px 0; overflow: hidden;
         }
         .progress-fill { height: 100%; background: #ff69b4; border-radius: 10px; transition: width 0.5s; }
-        .counter { color: #888; font-size: 10px; }
+        .counter { color: #888; font-size: 9px; }
 
+        /* ЗВЁЗДЫ-БУКВЫ — МЕНЬШЕ */
         .name-star {
             position: absolute;
-            font-size: 50px;
+            font-size: 30px;
             font-weight: bold;
             color: #fff;
-            text-shadow: 0 0 20px #ff69b4, 0 0 40px #ff1493, 0 0 60px #ff69b4;
-            animation: floatName 1.2s ease-out forwards;
+            text-shadow: 0 0 12px #ff69b4, 0 0 24px #ff1493;
+            animation: floatName 1s ease-out forwards;
             opacity: 0;
             z-index: 10;
             font-family: 'Arial', sans-serif;
         }
         @keyframes floatName {
-            0% { transform: translateY(50px) scale(0.3); opacity: 0; }
-            50% { transform: translateY(-10px) scale(1.2); opacity: 1; }
+            0% { transform: translateY(30px) scale(0.5); opacity: 0; }
             100% { transform: translateY(0) scale(1); opacity: 1; }
         }
         
@@ -180,8 +180,8 @@
             position: absolute;
             border-radius: 50%;
             background: #fff;
-            box-shadow: 0 0 10px #ff69b4, 0 0 20px #ff1493;
-            animation: floatName 1s ease-out forwards;
+            box-shadow: 0 0 6px #ff69b4, 0 0 12px #ff1493;
+            animation: floatName 0.8s ease-out forwards;
             opacity: 0;
             z-index: 9;
         }
@@ -208,7 +208,7 @@
 
         function createStars() {
             const c=document.getElementById('stars');
-            for(let i=0;i<150;i++){
+            for(let i=0;i<120;i++){
                 const s=document.createElement('div'); s.className='star';
                 s.style.left=Math.random()*100+'%'; s.style.top=Math.random()*100+'%';
                 s.style.width=(Math.random()*2+1)+'px'; s.style.height=s.style.width;
@@ -220,10 +220,10 @@
             const c=document.getElementById('hearts'); const h=document.createElement('span');
             h.className='float-heart'; h.textContent=['💚','💖','💕','💗'][Math.floor(Math.random()*4)];
             h.style.left=Math.random()*100+'%'; h.style.animationDuration=(Math.random()*3+3)+'s';
-            h.style.fontSize=(Math.random()*16+12)+'px'; c.appendChild(h);
+            h.style.fontSize=(Math.random()*14+10)+'px'; c.appendChild(h);
             setTimeout(function(){h.remove();},6000);
         }
-        setInterval(heart,400);
+        setInterval(heart,500);
 
         function show(title,desc,html){
             const box=document.getElementById('questBox'); box.style.opacity='0';
@@ -246,17 +246,17 @@
         function step0(){step=0;bar();show('Привет, '+HER_NAME+' 💚','Я хочу тебе кое-что сказать...','<p>Но сначала пройди испытания 🎮</p><br><button class="btn" onclick="step1()">💚 НАЧАТЬ</button>');}
         function step1(){step=1;clickCount=0;bar();show('🎮 Испытание 1','Проверка скорости','<div>Кликни <b style="color:#ff69b4;">'+clickGoal+'</b> раз!</div><div class="clicker-area" id="clicker" onclick="doClick()">💚</div><div class="clicker-counter" id="clickerScore">0 / '+clickGoal+'</div>');}
         function doClick(){clickCount++;const s=document.getElementById('clickerScore');if(s)s.textContent=clickCount+' / '+clickGoal;const e=document.getElementById('clicker');if(e){e.style.transform='scale(0.85)';setTimeout(function(){e.style.transform='scale(1)';},80);}if(clickCount>=clickGoal)setTimeout(step2,500);}
-        function step2(){step=2;secretNum=Math.floor(Math.random()*50)+1;bar();show('🎮 Испытание 2','Угадай моё число','<div>Число от <b>1 до 50</b></div><input type="number" class="guess-input" id="guessInp" min="1" max="50" placeholder="?"><br><button class="btn" onclick="doGuess()" style="padding:6px 16px;font-size:12px;">🎯 Угадать</button><div class="guess-hint" id="guessHint"></div>');setTimeout(function(){const inp=document.getElementById('guessInp');if(inp)inp.focus();},500);}
+        function step2(){step=2;secretNum=Math.floor(Math.random()*50)+1;bar();show('🎮 Испытание 2','Угадай моё число','<div>Число от <b>1 до 50</b></div><input type="number" class="guess-input" id="guessInp" min="1" max="50" placeholder="?"><br><button class="btn" onclick="doGuess()" style="padding:6px 14px;font-size:12px;">🎯 Угадать</button><div class="guess-hint" id="guessHint"></div>');setTimeout(function(){const inp=document.getElementById('guessInp');if(inp)inp.focus();},500);}
         function doGuess(){const inp=document.getElementById('guessInp'),hint=document.getElementById('guessHint');if(!inp||!hint)return;const g=parseInt(inp.value);if(!g||g<1||g>50){hint.textContent='⚠️ От 1 до 50!';return;}if(g===secretNum){hint.innerHTML='✅ УГАДАЛА! Число: <b>'+secretNum+'</b>';hint.style.color='#00ff00';setTimeout(step3,1200);}else if(g<secretNum){hint.textContent='📈 Больше!';hint.style.color='#ffaa00';}else{hint.textContent='📉 Меньше!';hint.style.color='#ffaa00';}inp.value='';inp.focus();}
         function step3(){step=3;catchCount=0;bar();if(catchInterval)clearInterval(catchInterval);show('🎮 Испытание 3','Ловкость рук','<div>Поймай <b style="color:#ff69b4;">'+catchGoal+'</b> сердечек!</div><div class="catch-area" id="catchArea"></div><div class="catch-score" id="catchScore">0 / '+catchGoal+'</div>');catchInterval=setInterval(function(){if(catchCount<catchGoal&&step===3)makeHeart();},700);setTimeout(makeHeart,100);}
         function makeHeart(){const area=document.getElementById('catchArea');if(!area||step!==3)return;const old=area.querySelectorAll('.catch-heart');if(old.length>4)old[0].remove();const h=document.createElement('div');h.className='catch-heart';h.textContent=['💚','💖','💕','💗'][Math.floor(Math.random()*4)];h.style.left=Math.random()*(area.clientWidth-40)+'px';h.style.top=Math.random()*(area.clientHeight-40)+'px';h.onclick=function(e){e.stopPropagation();catchCount++;const s=document.getElementById('catchScore');if(s)s.textContent=catchCount+' / '+catchGoal;h.remove();if(catchCount>=catchGoal){clearInterval(catchInterval);step=4;bar();setTimeout(step4,500);}};area.appendChild(h);setTimeout(function(){if(h.parentNode)h.remove();},2000);}
         
-        function step4(){step=4;bar();document.getElementById('counter').textContent='';show('','','<div class="final-heart">💖</div><br><div class="final-text"><span class="big">'+HER_NAME+'...</span><br><br>Ты прошла испытания! 🎉<br><br>Я давно хотел сказать...<br><br><span class="big">Давай встречаться?</span><br><br><div style="display:flex;gap:15px;justify-content:center;"><button class="btn" id="btnYes" onclick="answerYes()">💚 Да</button><button class="btn btn-no" id="btnNo" onmouseenter="runAway()" ontouchstart="runAway()">🫣 Нет</button></div></div>');}
+        function step4(){step=4;bar();document.getElementById('counter').textContent='';show('','','<div class="final-heart">💖</div><br><div class="final-text"><span class="big">'+HER_NAME+'...</span><br><br>Ты прошла испытания! 🎉<br><br>Я давно хотел сказать...<br><br><span class="big">Давай встречаться?</span><br><br><div style="display:flex;gap:12px;justify-content:center;"><button class="btn" id="btnYes" onclick="answerYes()">💚 Да</button><button class="btn btn-no" id="btnNo" onmouseenter="runAway()" ontouchstart="runAway()">🫣 Нет</button></div></div>');}
         function runAway(){const btn=document.getElementById('btnNo');if(!btn)return;const box=document.getElementById('questBox');const r=box.getBoundingClientRect();btn.style.position='absolute';btn.style.left=Math.random()*(r.width-btn.offsetWidth-20)+10+'px';btn.style.top=Math.random()*(r.height-btn.offsetHeight-20)+10+'px';btn.style.transition='all 0.3s ease';}
         
         function answerYes(){
             sendTelegram(`💖 ${HER_NAME} сказала ДА! ${YOUR_NAME}, поздравляю!`);
-            document.getElementById('questBox').innerHTML='<div class="final-heart">💖</div><br><div class="final-text"><div class="love-text">Я ЛЮБЛЮ ТЕБЯ ДИАНОЧКА!</div><br><span style="font-size:16px;color:#ff69b4;">Ты — моя вселенная 💫</span></div>';
+            document.getElementById('questBox').innerHTML='<div class="final-heart">💖</div><br><div class="final-text"><div class="love-text">Я ЛЮБЛЮ ТЕБЯ ДИАНОЧКА!</div><br><span style="font-size:14px;color:#ff69b4;">Ты — моя вселенная 💫</span></div>';
             document.getElementById('counter').textContent='';
             document.getElementById('progressFill').style.width='100%';
             buildNameWithStars('ДИАНА');
@@ -265,29 +265,29 @@
         function buildNameWithStars(name) {
             const container = document.getElementById('stars');
             const letters = name.split('');
-            const letterWidth = 70;
+            const letterWidth = 45;
             const totalWidth = letters.length * letterWidth;
             const startX = (window.innerWidth - totalWidth) / 2;
-            const centerY = window.innerHeight * 0.15;
+            const centerY = window.innerHeight * 0.2;
             
             letters.forEach((letter, index) => {
                 const xPos = startX + index * letterWidth;
-                for (let i = 0; i < 20; i++) {
+                for (let i = 0; i < 12; i++) {
                     const sparkle = document.createElement('div');
                     sparkle.className = 'name-sparkle';
                     sparkle.style.left = (xPos + (Math.random() - 0.5) * letterWidth) + 'px';
-                    sparkle.style.top = (centerY + (Math.random() - 0.5) * 80) + 'px';
-                    sparkle.style.width = (Math.random() * 6 + 3) + 'px';
+                    sparkle.style.top = (centerY + (Math.random() - 0.5) * 50) + 'px';
+                    sparkle.style.width = (Math.random() * 4 + 2) + 'px';
                     sparkle.style.height = sparkle.style.width;
-                    sparkle.style.animationDelay = (Math.random() * 0.6 + index * 0.15) + 's';
+                    sparkle.style.animationDelay = (Math.random() * 0.4 + index * 0.1) + 's';
                     container.appendChild(sparkle);
                 }
                 const letterEl = document.createElement('div');
                 letterEl.className = 'name-star';
                 letterEl.textContent = letter;
-                letterEl.style.left = (xPos + letterWidth/2 - 25) + 'px';
-                letterEl.style.top = (centerY - 25) + 'px';
-                letterEl.style.animationDelay = (index * 0.15) + 's';
+                letterEl.style.left = (xPos + letterWidth/2 - 15) + 'px';
+                letterEl.style.top = (centerY - 15) + 'px';
+                letterEl.style.animationDelay = (index * 0.1) + 's';
                 container.appendChild(letterEl);
             });
         }
